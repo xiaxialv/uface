@@ -1,4 +1,4 @@
-package com.zaozao;
+package com.zaozao.util;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
