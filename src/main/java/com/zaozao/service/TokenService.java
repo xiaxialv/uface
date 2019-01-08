@@ -4,6 +4,8 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.zaozao.util.EncryptUtil;
 import com.zaozao.util.HttpRequestUtil;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -16,6 +18,7 @@ import java.util.Map;
  * @author Sidney 2019-01-08.
  */
 @Service
+@EnableScheduling
 public class TokenService {
     private String token;
 
@@ -24,6 +27,7 @@ public class TokenService {
     private static final String APP_SECRET = "3EC20F59D66E40CEA4AF6A66156A9570";
 
     @PostConstruct
+    @Scheduled(cron = "0 0 */10 * * ?")
     void init() throws UnsupportedEncodingException, NoSuchAlgorithmException {
         long timestamp = System.currentTimeMillis();
         Map<String, String> map = new HashMap<>();
