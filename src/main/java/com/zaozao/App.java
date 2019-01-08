@@ -26,7 +26,7 @@ public class App {
     public String getToken() throws Exception {
         long timestamp = System.currentTimeMillis();
         //文档 : http://developer.uface.uni-ubi.com/document/18011
-        Map<String, Object> map = new HashMap<>();
+        Map<String, String> map = new HashMap<>();
         map.put("appId", APP_ID);
         map.put("appKey", APP_KEY);
         map.put("timestamp", timestamp + "");
@@ -38,8 +38,9 @@ public class App {
 
         map.put("sign", sign);
 
+        System.out.println(JSON.toJSONString(map));
         String result =
-                HttpRequestUtil.post("http://gs-api.uface.uni-ubi.com/v1/" + APP_ID + "/auth", JSON.toJSONString(map));
+                HttpRequestUtil.postParamUrl("http://gs-api.uface.uni-ubi.com/v1/" + APP_ID + "/auth", map);
         System.out.println(result);
         return "xiaxia.html";
     }
