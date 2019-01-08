@@ -29,7 +29,7 @@ public class PersonService {
         System.out.println(JSON.toJSONString(map));
         //URL：http://gs-api.uface.uni-ubi.com/v1/{appId}/person/{guid}，method：GET
         String result =
-                HttpRequestUtil.postParamUrl("http://gs-api.uface.uni-ubi.com/v1/" + APP_ID + "/person/"+guid, map);
+                HttpRequestUtil.get("http://gs-api.uface.uni-ubi.com/v1/" + APP_ID + "/person/"+guid+"?token="+token);
         JSONObject jsonObject = JSON.parseObject(result);
         System.out.println(jsonObject);
         return result;
